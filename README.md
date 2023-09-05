@@ -17,14 +17,10 @@ npm install mersenne-twister
 npm install --save @types/mersenne-twister
 
 # create s3 bucket
-# setup role for s3 bucket putobject
-### fluent-bit
-# install fluent-bit
-curl https://raw.githubusercontent.com/fluent/fluent-bit/master/install.sh | sh
-
+# setup role for S3 GetObject,PutObject,GetObjectAttributes
 
 # forwarder 
-### td agent
+# td agent
 # install td-agent fluentd
 curl -L https://toolbelt.treasuredata.com/sh/install-amazon2-td-agent3.sh | sh
 
@@ -35,7 +31,7 @@ curl -L https://toolbelt.treasuredata.com/sh/install-amazon2-td-agent3.sh | sh
 # setup /etc/td-agent/td-agent.conf
 
 # forwarder instance
-<source>
+```<source>
   @type syslog
   port 514
   bind 0.0.0.0
@@ -55,7 +51,9 @@ curl -L https://toolbelt.treasuredata.com/sh/install-amazon2-td-agent3.sh | sh
     chunk_limit_size 2m
   </buffer>
 </match>
-
+```
 # sender
 # /etc/rsyslog.conf
+```
 *.* @__FORWARDER_PORT__:__SYSLOG_PORT__
+```
