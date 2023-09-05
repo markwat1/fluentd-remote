@@ -13,12 +13,12 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `cdk diff`        compare deployed stack with current state
 * `cdk synth`       emits the synthesized CloudFormation template
 
+# requirements for PasswordGenerator
 npm install mersenne-twister
 npm install --save @types/mersenne-twister
-
+# prepare
 # create s3 bucket
 # setup role for S3 GetObject,PutObject,GetObjectAttributes
-
 # forwarder 
 # td agent
 # install td-agent fluentd
@@ -28,10 +28,10 @@ curl -L https://toolbelt.treasuredata.com/sh/install-amazon2-td-agent3.sh | sh
  td-agent to root
 # setup  /usr/lib/systemd/system/td-agent.service
  td-agent to root
-# setup /etc/td-agent/td-agent.conf
-
 # forwarder instance
-```<source>
+## setup /etc/td-agent/td-agent.conf
+```
+<source>
   @type syslog
   port 514
   bind 0.0.0.0
@@ -53,7 +53,7 @@ curl -L https://toolbelt.treasuredata.com/sh/install-amazon2-td-agent3.sh | sh
 </match>
 ```
 # sender
-# /etc/rsyslog.conf
+## setup /etc/rsyslog.conf
 ```
 *.* @__FORWARDER_PORT__:__SYSLOG_PORT__
 ```
